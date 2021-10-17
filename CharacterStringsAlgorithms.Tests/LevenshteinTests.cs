@@ -31,6 +31,16 @@ namespace CharacterStringsAlgorithms.Tests
             Assert.Equal(3, levenshteinArray[4, 4]);
         }
 
+        // https://www.spoj.com/problems/EDIST/
+        [Fact]
+        public void LevenstheinTest3()
+        {
+            int[,] levenshteinArray = LevenshteinCalculator.Levenshtein("FOOD", "MONEY");
+
+            Print2DArray("FOOD", "MONEY", levenshteinArray);
+            Assert.Equal(4, levenshteinArray[4, 5]);
+        }
+
         private void Print2DArray<T>(string vertical, string horizontal, T[,] matrix)
         {
             int verticalCount = 0;
@@ -61,5 +71,9 @@ namespace CharacterStringsAlgorithms.Tests
                 m_output.WriteLine(strb.ToString());
             }
         }
+
+        // Oppgave med utvidelse:
+        // https://www.spoj.com/problems/ADVEDIST/
+        
     }
 }
