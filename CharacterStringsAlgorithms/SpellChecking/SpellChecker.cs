@@ -4,10 +4,16 @@ namespace CharacterStringsAlgorithms.SpellChecking
 {
     public class SpellChecker
     {
+        private readonly TrieNode m_t;
         public const string AsciiLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+        public SpellChecker(string[] s)
+        {
+            m_t = Trie(s);
+        }
+
         // Legg et ord til treet
-        public TrieNode Add(TrieNode t, string w, int i = 0)
+        private TrieNode Add(TrieNode t, string w, int i = 0)
         {
             if (t == null)
             {
@@ -27,7 +33,7 @@ namespace CharacterStringsAlgorithms.SpellChecking
         }
 
         // Bygg treet for ordene i ordboken s
-        public TrieNode Trie(string[] s)
+        private TrieNode Trie(string[] s)
         {
             TrieNode t = null;
             foreach (string w in s)
@@ -39,17 +45,17 @@ namespace CharacterStringsAlgorithms.SpellChecking
         }
 
         // Kjør stavekontroll på et ord mot treet
-        public string SpellCheck(TrieNode t, string w)
+        public string SpellCheck(string w)
         {
-            if (t == null)
+            if (m_t == null)
             {
-                throw new ArgumentNullException(nameof(t));
+                throw new Exception("Treet er ikke initialisert");
             }
 
             int dist = 0;
             while (true)
             {
-                string u = Search(t, dist, w);
+                string u = Search(m_t, dist, w);
                 if (u != null)  // Treff på distanse dist
                 {
                     return u;
