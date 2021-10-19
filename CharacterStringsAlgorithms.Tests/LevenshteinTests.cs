@@ -15,7 +15,7 @@ namespace CharacterStringsAlgorithms.Tests
         }
         
         [Fact]
-        public void LevenstheinTest1()
+        public void LevenshteinTest1()
         {
             int[,] levenshteinArray = LevenshteinCalculator.Levenshtein("sitting", "kitten");
 
@@ -23,7 +23,7 @@ namespace CharacterStringsAlgorithms.Tests
         }
 
         [Fact]
-        public void LevenstheinTest2()
+        public void LevenshteinTest2()
         {
             int[,] levenshteinArray = LevenshteinCalculator.Levenshtein("AUDI", "LADA");
 
@@ -33,7 +33,7 @@ namespace CharacterStringsAlgorithms.Tests
 
         // https://www.spoj.com/problems/EDIST/
         [Fact]
-        public void LevenstheinTest3()
+        public void LevenshteinTest3()
         {
             int[,] levenshteinArray = LevenshteinCalculator.Levenshtein("FOOD", "MONEY");
 
