@@ -12,6 +12,8 @@ namespace CharacterStringsAlgorithms.Levensthein
             // Lag tabellen A
             //   Rad 0 og kolonne 0 blir initialisert som det er påkrevd
             //   De gjenstående tallene blir overskrevet under beregningen
+            //   Dimensjonen til A er (n + 1) x (m + 1) selv om strengene x og y er av lengde n og m.
+            //   Dette er fordi A regner med ale prefiksene til x og y, inkludert den tomme strengen.
             var A = new int[n + 1, m + 1];
             for (int i = 0; i < n + 1; i++)
             {
@@ -25,9 +27,11 @@ namespace CharacterStringsAlgorithms.Levensthein
             {
                 for (int j = 0; j < m; j++)
                 {
-                    A[i + 1, j + 1] = Min(A[i, j + 1] + 1,                               // innsetting
-                        A[i + 1, j] + 1,                              // sletting
-                        A[i, j] + Convert.ToInt32(x[i] != y[j]));     // bytting
+                    A[i + 1, j + 1] = Min(
+                        A[i, j] + Convert.ToInt32(x[i] != y[j]),        // bytting
+                        A[i + 1, j] + 1,                                // sletting
+                        A[i, j + 1] + 1                                 // innsetting
+                        );     
                 }
             }
 
