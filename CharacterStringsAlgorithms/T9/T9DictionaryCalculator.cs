@@ -5,35 +5,11 @@ namespace CharacterStringsAlgorithms.T9
 {
     public class T9DictionaryCalculator
     {
-        private const string t9 = "22233344455566677778889999";
-        //                         abcdefghijklmnopqrstuvwxyz   mapping på telefonen
-
         private readonly Dictionary<string, string> m_prop;
 
         public T9DictionaryCalculator(Dictionary<string, int> dic)
         {
             m_prop = PredictiveText(dic);
-        }
-
-        public static char LetterToDigit(char x)
-        {
-            if (x < 'a' || x > 'z')
-            {
-                throw new ArgumentException("x is not a digit", nameof(x));
-            }
-
-            return t9[x - 'a'];
-        }
-
-        public static string CodeWord(string word)
-        {
-            string returnString = "";
-            for (int i = 0; i < word.Length; i++)
-            {
-                returnString += LetterToDigit(word[i]);
-            }
-
-            return returnString;
         }
 
         public static Dictionary<string, string> PredictiveText(Dictionary<string, int> dic)
@@ -71,6 +47,30 @@ namespace CharacterStringsAlgorithms.T9
             }
 
             return prop;
+        }
+
+        public static string CodeWord(string word)
+        {
+            string returnString = "";
+            for (int i = 0; i < word.Length; i++)
+            {
+                returnString += LetterToDigit(word[i]);
+            }
+
+            return returnString;
+        }
+
+        private const string T9 = "22233344455566677778889999";
+        //                         abcdefghijklmnopqrstuvwxyz   mapping på telefonen
+
+        public static char LetterToDigit(char x)
+        {
+            if (x < 'a' || x > 'z')
+            {
+                throw new ArgumentException("x is not a letter", nameof(x));
+            }
+
+            return T9[x - 'a'];
         }
 
         public string Propose(string seq)
