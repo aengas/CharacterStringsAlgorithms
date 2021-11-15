@@ -17,6 +17,17 @@ namespace CharacterStringsAlgorithms.Tests
         }
 
         [Fact]
+        public void LongestBoundaryPalindromeTest1()
+        {
+            string input = "lilipolilil";
+            string expectedOutput = "lil";
+
+            string output = MaximalBoundariesCalculator.LongestBoundaryPalindrome(input);
+
+            Assert.Equal(expectedOutput, output);
+        }
+
+        [Fact]
         public void KnuthMorrisPrattTest1()
         {
             string input1 = "supercalifragilisticexpialidocious";

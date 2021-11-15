@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CharacterStringsAlgorithms.MaximalBoundaries
 {
@@ -26,6 +27,15 @@ namespace CharacterStringsAlgorithms.MaximalBoundaries
             }
 
             return f;
+        }
+
+        public static string LongestBoundaryPalindrome(string x)
+        {
+            string xPal = new(x.Reverse().ToArray());
+            string x2 = x + xPal;
+            int[] f = MaximumBorderLength(x + xPal);
+            int length = f[x2.Length - 1];
+            return x.Substring(x.Length - length, length);
         }
 
         public static int KnuthMorrisPratt(string s, string t)
