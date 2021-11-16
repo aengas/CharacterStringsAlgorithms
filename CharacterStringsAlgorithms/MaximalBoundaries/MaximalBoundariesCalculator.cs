@@ -33,9 +33,9 @@ namespace CharacterStringsAlgorithms.MaximalBoundaries
         {
             string xPal = new(x.Reverse().ToArray());
             string x2 = x + xPal;
-            int[] f = MaximumBorderLength(x + xPal);
-            int length = f[x2.Length - 1];
-            return x.Substring(x.Length - length, length);
+            int[] f = MaximumBorderLength(x2);
+            int maximalBorderLength = f[x2.Length - 1];
+            return x.Substring(x.Length - maximalBorderLength, maximalBorderLength);
         }
 
         public static int KnuthMorrisPratt(string s, string t)

@@ -65,6 +65,17 @@ namespace CharacterStringsAlgorithms.Tests
         [Fact]
         public void PowerstringTest2()
         {
+            string input = "abaabaaba";
+            int expectedOutput = 3;
+
+            int output = MaximalBoundariesCalculator.PowerstringByBorder(input);
+
+            Assert.Equal(expectedOutput, output);
+        }
+
+        [Fact]
+        public void PowerstringTestByFind()
+        {
             string input = "blablabla";
             int expectedOutput = 3;
 
@@ -77,9 +88,9 @@ namespace CharacterStringsAlgorithms.Tests
         [Fact]
         public void PowerstringTest3()
         {
-            Assert.Equal(1, MaximalBoundariesCalculator.PowerstringByFind("abcd"));
-            Assert.Equal(4, MaximalBoundariesCalculator.PowerstringByFind("aaaa"));
-            Assert.Equal(3, MaximalBoundariesCalculator.PowerstringByFind("ababab"));
+            Assert.Equal(1, MaximalBoundariesCalculator.PowerstringByBorder("abcd"));
+            Assert.Equal(4, MaximalBoundariesCalculator.PowerstringByBorder("aaaa"));
+            Assert.Equal(3, MaximalBoundariesCalculator.PowerstringByBorder("ababab"));
         }
 
         [Fact]
